@@ -1,5 +1,5 @@
 const commentRouter = require("express").Router();
-const { Comment } = require("../../models/");
+const { Comment } = require("../../models/comment");
 const withAuth = require("../../utils/auth");
 
 commentRouter.post("/", withAuth, (req, res) => {

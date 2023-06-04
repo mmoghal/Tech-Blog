@@ -1,9 +1,9 @@
 const dashboardRouter = require("express").Router();
-const { Post } = require("../models");
+const { PostModel } = require("../models");
 const withAuth = require("../utils/auth");
 
 dashboardRouter.get("/", withAuth, (req, res) => {
-  Post.findAll({
+  PostModel.findAll({
     where: {
       userId: req.session.userId
     }
@@ -29,7 +29,7 @@ dashboardRouter.get("/new", withAuth, (req, res) => {
 });
 
 dashboardRouter.get("/edit/:id", withAuth, (req, res) => {
-  Post.findByPk(req.params.id)
+  PostModel.findByPk(req.params.id)
     .then(dbPostData => {
       if (dbPostData) {
         const post = dbPostData.get({ plain: true });

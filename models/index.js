@@ -1,4 +1,3 @@
-const models = require('./models');
 const UserModel = require('./user');
 const PostModel = require('./post');
 const CommentModel = require('./comment');
@@ -20,7 +19,6 @@ CommentModel.belongsTo(UserModel, {
 
 module.exports = {
   UserModel,
-  CommentModel,
   PostModel,
-  ...models
+  CommentModel
 };

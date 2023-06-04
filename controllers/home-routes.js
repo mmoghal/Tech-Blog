@@ -1,10 +1,9 @@
 const homeRouter = require("express").Router();
-const { Post, Comment, User } = require("../models");
+const { PostModel, CommentModel, UserModel } = require("../models");
 
-// get all posts for homepage
 homeRouter.get("/", (req, res) => {
-  Post.findAll({
-    include: [User],
+  PostModel.findAll({
+    include: [UserModel],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
@@ -16,14 +15,13 @@ homeRouter.get("/", (req, res) => {
     });
 });
 
-// get single post
 homeRouter.get("/post/:id", (req, res) => {
-  Post.findByPk(req.params.id, {
+  PostModel.findByPk(req.params.id, {
     include: [
-      User,
+      UserModel,
       {
-        model: Comment,
-        include: [User],
+        model: CommentModel,
+        include: [UserModel],
       },
     ],
   })

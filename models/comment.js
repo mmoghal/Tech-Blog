@@ -1,24 +1,15 @@
-const User = require('./user');
-const Post = require('./post');
-const Comment = require('./CommentModel');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection.js');
 
-Post.belongsTo(User, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE'
-});
+class CommentModel extends Model {}
 
-Post.hasMany(Comment, {
-  foreignKey: 'postId',
-  onDelete: 'CASCADE'
-});
+CommentModel.init(
+  {
+    // Define comment model fields
+  },
+  {
+    sequelize
+  }
+);
 
-Comment.belongsTo(User, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE'
-});
-
-module.exports = {
-  User,
-  Comment,
-  Post
-};
+module.exports = CommentModel;
