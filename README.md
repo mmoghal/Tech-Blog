@@ -6,6 +6,10 @@ A CMS-style blog site where users can create, read, update, and delete blog post
 
 ![alt Image of the application](https://github.com/mmoghal/tech-blog/blob/main/tech.png)
 
+# Deployed Application
+
+To see the application in action, check out this https://pacific-beyond-21037.herokuapp.com/
+
 
 ## Table of Contents
 
