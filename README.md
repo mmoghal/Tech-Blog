@@ -2,7 +2,7 @@
 
 A CMS-style blog site where users can create, read, update, and delete blog posts. Users can also leave comments on the blog posts.
 
-![Tech Blog Screenshot](screenshot.png)
+![Tech Blog Screenshot](https://github.com/mmoghal/tech-blog/tree/main/public/images/tech.png)
 
 ## Table of Contents
 
