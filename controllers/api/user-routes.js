@@ -1,26 +1,29 @@
+// Import necessary modules and models
 const router = require("express").Router();
 const { User } = require("../../models");
 
+// Route for creating a new user
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     password: req.body.password
   })
-  .then(dbUserData => {
-    req.session.save(() => {
-      req.session.userId = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
+    .then(dbUserData => {
+      req.session.save(() => {
+        req.session.userId = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
 
-      res.json(dbUserData);
+        res.json(dbUserData);
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
 });
 
+// Route for user login
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -43,12 +46,13 @@ router.post("/login", (req, res) => {
       req.session.userId = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-  
+
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
 });
 
+// Route for user logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -60,23 +64,24 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Route for deleting a user
 router.delete("/user/:id", (req, res) => {
   User.destroy({
     where: {
       id: req.params.id
     }
   })
-  .then(dbUserData => {
-    if (!dbUserData) {
-      res.status(404).json({ message: 'No user found with this id' });
-      return;
-    }
-    res.json(dbUserData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

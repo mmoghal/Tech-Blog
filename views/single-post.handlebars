@@ -1,13 +1,13 @@
 <div class="post">
   <article class="card">
     <div class="card-header flex-row justify-space-between">
-      <h2>{{post.title}}</h2>
+      <h2>{{post.title}}</h2> <!-- Display the post title -->
       <div>
-        Posted by {{post.User.username}} on {{format_date post.createdAt}}
+        Posted by {{post.User.username}} on {{format_date post.createdAt}} <!-- Display the username and creation date of the post -->
       </div>
     </div>
     <div class="card-body">
-      {{post.body}}
+      {{post.body}} <!-- Display the post content -->
     </div>
   </article>
 
@@ -18,13 +18,13 @@
       </div>
 
       <div class="card-body">
-        {{#each post.Comments}}
+        {{#each post.Comments}} <!-- Iterate through each comment in the post.Comments array -->
           <div>
             <p>
-              {{body}}
+              {{body}} <!-- Display the comment body -->
             </p>
             <p>
-              &mdash; {{User.username}}, {{format_date createdAt}}
+              &mdash; {{User.username}}, {{format_date createdAt}} <!-- Display the username and creation date of the comment -->
             </p>
           </div>
         {{/each}}
@@ -32,19 +32,19 @@
     </section>
   {{/if}}
 
-  <form id="new-comment-form" class="card">
+  <form id="new-comment-form" class="card"> <!-- Form to add a new comment -->
     <div class="card-header">
       <h3>Add New Comment</h3>
     </div>
 
     <div class="card-body">
-      <input type="hidden" name="post-id" value="{{post.id}}" />
+      <input type="hidden" name="post-id" value="{{post.id}}" /> <!-- Hidden input field to store the post ID -->
 
       <label class="form-label" for="comment-body">Comment</label>
 
-      <textarea name="comment-body" class="form-input"></textarea>
+      <textarea name="comment-body" class="form-input"></textarea> <!-- Textarea for entering the comment body -->
 
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn">Submit</button> <!-- Button to submit the comment form -->
     </div>
   </form>
 </div>

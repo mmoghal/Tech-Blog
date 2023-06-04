@@ -1,3 +1,4 @@
+/* Define CSS variables */
 :root {
     --primary: #ffc107;
     --secondary: #17a2b8;
@@ -7,10 +8,12 @@
     --border-radius: 0.5rem;
   }
   
+  /* Apply border-box sizing to all elements */
   * {
     box-sizing: border-box;
   }
   
+  /* Body styles */
   body {
     background-color: var(--light-dark);
     margin: 0;
@@ -21,6 +24,7 @@
     font-size: 16px;
   }
   
+  /* Heading styles */
   h1,
   h2,
   h3,
@@ -33,32 +37,39 @@
     line-height: 1.3;
   }
   
+  /* Visited link styles */
   h2 a:visited {
     color: var(--tertiary);
   }
   
+  /* Link styles */
   h2 a {
     color: var(--primary);
   }
   
+  /* Header styles */
   header {
     margin-top: 50px;
   }
   
+  /* Main container styles */
   main {
     margin: 20px auto;
     width: 90%;
     max-width: 1200px;
   }
   
+  /* Link styles */
   a {
     text-decoration: none;
   }
   
+  /* Paragraph styles */
   p {
     font-size: 1.1rem;
   }
   
+  /* Input styles */
   input {
     width: 100%;
     border: 1px solid var(--dark);
@@ -67,10 +78,12 @@
     padding: 10px;
   }
   
+  /* Card header styles */
   .card-header h2 {
     color: var(--primary);
   }
   
+  /* Button styles */
   .btn {
     font-size: 1.2rem;
     text-decoration: none;
@@ -86,44 +99,53 @@
     box-shadow: 3px 3px var(--dark);
   }
   
+  /* Button hover styles */
   .btn:hover {
     color: var(--light-dark);
     background-color: var(--secondary);
     box-shadow: 2px 2px var(--dark);
   }
   
+  /* Inline button styles */
   .btn-inline {
     display: inline;
   }
   
+  /* Inline list styles */
   .li-inline {
     display: inline;
   }
   
+  /* Navbar styles */
   .navbar {
     width: 100%;
     position: fixed;
     background-color: var(--dark);
   }
   
+  /* Navbar item styles */
   .nav-item {
     margin: 0 20px;
   }
   
+  /* Navbar link styles */
   .nav-item a {
     color: var(--light-dark);
   }
   
+  /* Hero section styles */
   .hero {
     padding: 3% 4%;
     background-color: var(--dark);
     color: var(--light-dark);
   }
   
+  /* Hero section paragraph styles */
   .hero p {
     max-width: 80%;
   }
   
+  /* Application title styles */
   .app-title {
     font-size: 3rem;
     background-color: var(--primary);
@@ -134,14 +156,17 @@
     box-shadow: 6px 5px var(--dark);
   }
   
+  /* Application title link styles */
   .app-title a {
     color: var(--dark);
   }
   
+  /* List group styles */
   .list-group {
     padding: 1%;
   }
   
+  /* List item styles */
   .list-item {
     margin-bottom: 10px;
     padding: 1.5%;
@@ -151,10 +176,12 @@
     text-decoration: none;
   }
   
+  /* List item hover styles */
   .list-item:hover {
     background-color: var(--secondary);
   }
   
+  /* Footer link styles */
   .footer a {
     display: inline-block;
     padding: 1em;
@@ -165,13 +192,14 @@
     text-decoration: none;
   }
   
-  /* CARDS */
+  /* Card styles */
   .card {
     margin: 0 0 20px 0;
     border: 3px solid var(--dark);
     border-radius: var(--border-radius);
   }
   
+  /* Card header styles */
   .card-header {
     color: var(--light-dark);
     background-color: var(--dark);
@@ -179,22 +207,25 @@
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   }
   
+  /* Card body styles */
   .card-body {
     padding: 1%;
   }
   
-  /* FORM */
+  /* Form label, input, and textarea styles */
   .form-label,
   .form-input,
   .form-textarea {
     display: block;
   }
   
+  /* Form label styles */
   .form-label {
     font-size: 16px;
     margin: 0 0 5px 0;
   }
   
+  /* Form input styles */
   .form-input {
     width: 100%;
     padding: 1%;
@@ -204,32 +235,35 @@
     border-radius: var(--border-radius);
   }
   
-  /* HEIGHT / WIDTH UTILS */
+  /* Height utility class */
   .min-100-vh {
     min-height: 100vh;
   }
   
+  /* Width utility class */
   .min-100-vw {
     min-width: 100vw;
   }
   
-  /* FONT UTILS */
+  /* Text transform utility class */
   .text-uppercase {
     text-transform: uppercase;
   }
   
-  /* FLEX CONTENT */
+  /* Flexbox styles */
   .flex-row {
     display: flex;
     flex-wrap: wrap;
   }
   
+  /* Flexbox styles */
   .flex-column {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
   
+  /* Flexbox justify-content utilities */
   .justify-space-between {
     justify-content: space-between;
   }
@@ -250,6 +284,7 @@
     justify-content: center;
   }
   
+  /* Flexbox align-items utilities */
   .align-stretch {
     align-items: stretch;
   }
@@ -262,10 +297,12 @@
     align-items: center;
   }
   
+  /* Flexbox column auto utility */
   .col-auto {
     flex-grow: 1;
   }
   
+  /* Grid column utilities */
   .col-1,
   .col-2,
   .col-3,
@@ -281,7 +318,7 @@
     flex: 0 0 calc(100% * 1 / 12 - 2%);
   }
   
-  /* col-sm */
+  /* Grid column utilities for small screens */
   @media screen and (min-width: 640px) {
     .col-sm-1,
     .col-sm-2,
@@ -299,7 +336,7 @@
     }
   }
   
-  /* col-md */
+  /* Grid column utilities for medium screens */
   @media screen and (min-width: 768px) {
     .col-md-1,
     .col-md-2,
@@ -317,7 +354,7 @@
     }
   }
   
-  /* col-lg */
+  /* Grid column utilities for large screens */
   @media screen and (min-width: 992px) {
     .col-lg-1,
     .col-lg-2,
@@ -335,7 +372,7 @@
     }
   }
   
-  /* col-xl */
+  /* Grid column utilities for extra large screens */
   @media screen and (min-width: 1200px) {
     .col-xl-1,
     .col-xl-2,
@@ -353,8 +390,7 @@
     }
   }
   
-
-  /* sign up success and error messages: */
+  /* Success and error message styles */
   .message {
     margin-top: 10px;
     padding: 10px;

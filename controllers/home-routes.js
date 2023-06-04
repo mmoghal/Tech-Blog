@@ -1,7 +1,8 @@
+// Import necessary modules and models
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
 
-// get all posts for homepage
+// Route for displaying all posts on the homepage
 router.get("/", (req, res) => {
   Post.findAll({
     include: [User],
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// get single post
+// Route for displaying a single post and its associated comments
 router.get("/post/:id", (req, res) => {
   Post.findByPk(req.params.id, {
     include: [
@@ -41,6 +42,7 @@ router.get("/post/:id", (req, res) => {
     });
 });
 
+// Route for rendering the login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -50,6 +52,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// Route for rendering the signup page
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");

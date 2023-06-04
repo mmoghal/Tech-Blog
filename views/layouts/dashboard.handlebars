@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="flex-column min-100-vh">
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <ul class="flex-row">
       <li class="li-inline nav-item"><a href="/">Home</a></li>
@@ -15,15 +16,19 @@
       <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
     </ul>
   </nav>
+  <!-- Header -->
   <header class="hero">
     <h1 class="app-title"><a href="/dashboard">Your Dashboard</a></h1>
   </header>
+  <!-- Main Content -->
   <main class="col-auto">
-    {{{body}}}
+    {{{body}}} <!-- Server-side template engine will render dynamic content here -->
   </main>
+  <!-- Footer -->
   <footer class="footer flex-row justify-center">
     <a href="/dashboard/new" class="btn">➕ New Post</a> <!-- Added the "New Post" button here -->
   </footer>
+  <!-- JavaScript files -->
   <script src="/js/logout.js"></script>
   <script src="/js/edit.js"></script>
   <script src="/js/delete.js"></script>

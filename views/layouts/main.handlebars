@@ -10,6 +10,7 @@
 </head>
 
 <body class="flex-column min-100-vh">
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <ul>
       <li class="li-inline nav-item"><a href="/">Home</a></li>
@@ -18,19 +19,23 @@
       <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
     </ul>
   </nav>
+  <!-- Header -->
   <header class="hero">
     <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
   </header>
 
+  <!-- Main Content -->
   <main class="col-auto">
-    {{{body}}}
+    {{{body}}} <!-- Server-side template engine will render dynamic content here -->
   </main>
 
+  <!-- Footer -->
   <footer class="flex-row justify-center">
     &copy; The Tech Blog Hub
   </footer>
-</body>
+  <!-- JavaScript files -->
+  <script src="/js/logout.js"></script>
 
-<script src="/js/logout.js"></script>
+</body>
 
 </html>

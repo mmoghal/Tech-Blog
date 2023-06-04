@@ -1,7 +1,9 @@
+// Import necessary modules and models
 const router = require("express").Router();
 const { Post, Comment, User } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
+// Route for creating a new post
 router.post("/", withAuth, (req, res) => {
   const body = req.body;
   console.log(req.session.userId);
@@ -14,8 +16,9 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
+// Route for updating an existing post
 router.put("/:id", withAuth, (req, res) => {
-  console.log(req.body, req.params.id)
+  console.log(req.body, req.params.id);
   Post.update(req.body, {
     where: {
       id: req.params.id
@@ -33,8 +36,9 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
+// Route for deleting a post
 router.delete("/:id", withAuth, (req, res) => {
-  console.log(req.body, req.params.id)
+  console.log(req.body, req.params.id);
   Post.destroy({
     where: {
       id: req.params.id
