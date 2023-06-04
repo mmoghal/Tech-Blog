@@ -1,28 +1,28 @@
-const userRouter = require("express").Router();
-const UserModel = require("../../models/user");
+const router = require("express").Router();
+const { User } = require("../../models");
 
-userRouter.post("/", (req, res) => {
-  UserModel.create({
+router.post("/", (req, res) => {
+  User.create({
     username: req.body.username,
     password: req.body.password
   })
-    .then(dbUserData => {
-      req.session.save(() => {
-        req.session.userId = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
+  .then(dbUserData => {
+    req.session.save(() => {
+      req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-        res.json(dbUserData);
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+      res.json(dbUserData);
     });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
-userRouter.post("/login", (req, res) => {
-  UserModel.findOne({
+router.post("/login", (req, res) => {
+  User.findOne({
     where: {
       username: req.body.username
     }
@@ -43,39 +43,40 @@ userRouter.post("/login", (req, res) => {
       req.session.userId = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-
+  
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
 });
 
-userRouter.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  } else {
+  }
+  else {
     res.status(404).end();
   }
 });
 
-userRouter.delete("/:id", (req, res) => {
-  UserModel.destroy({
+router.delete("/user/:id", (req, res) => {
+  User.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    res.json(dbUserData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
-module.exports = userRouter;
+module.exports = router;

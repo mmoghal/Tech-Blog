@@ -1,8 +1,8 @@
-const commentRouter = require("express").Router();
-const { Comment } = require("../../models/comment");
+const router = require("express").Router();
+const { Comment } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
-commentRouter.post("/", withAuth, (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Comment.create({ ...req.body, userId: req.session.userId })
     .then(newComment => {
       res.json(newComment);
@@ -12,4 +12,4 @@ commentRouter.post("/", withAuth, (req, res) => {
     });
 });
 
-module.exports = commentRouter;
+module.exports = router;

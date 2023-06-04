@@ -1,15 +1,18 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+const { Sequelize, Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-class CommentModel extends Model {}
+class Comment extends Model {}
 
-CommentModel.init(
+Comment.init(
   {
-    // Define comment model fields
+    body: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize
   }
 );
 
-module.exports = CommentModel;
+module.exports = Comment;

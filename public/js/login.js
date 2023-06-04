@@ -12,10 +12,15 @@ const loginFormHandler = async function(event) {
       }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(function() {
-        document.location.replace("/dashboard");
-      })
-      .catch(err => console.log(err));
+    .then(function(response) {
+      if (!response.ok) {
+        console.log(err);
+        return;
+      }
+      alert("You have successfully logged in."); // Add this
+      document.location.replace("/dashboard");
+    })
+    .catch(err => console.log(err));
   };
   
   document.querySelector("#login-form").addEventListener("submit", loginFormHandler);

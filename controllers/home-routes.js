@@ -1,9 +1,10 @@
-const homeRouter = require("express").Router();
-const { PostModel, CommentModel, UserModel } = require("../models");
+const router = require("express").Router();
+const { Post, Comment, User } = require("../models");
 
-homeRouter.get("/", (req, res) => {
-  PostModel.findAll({
-    include: [UserModel],
+// get all posts for homepage
+router.get("/", (req, res) => {
+  Post.findAll({
+    include: [User],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
@@ -15,13 +16,14 @@ homeRouter.get("/", (req, res) => {
     });
 });
 
-homeRouter.get("/post/:id", (req, res) => {
-  PostModel.findByPk(req.params.id, {
+// get single post
+router.get("/post/:id", (req, res) => {
+  Post.findByPk(req.params.id, {
     include: [
-      UserModel,
+      User,
       {
-        model: CommentModel,
-        include: [UserModel],
+        model: Comment,
+        include: [User],
       },
     ],
   })
@@ -39,7 +41,7 @@ homeRouter.get("/post/:id", (req, res) => {
     });
 });
 
-homeRouter.get("/login", (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
@@ -48,7 +50,7 @@ homeRouter.get("/login", (req, res) => {
   res.render("login");
 });
 
-homeRouter.get("/signup", (req, res) => {
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
     return;
@@ -57,4 +59,4 @@ homeRouter.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-module.exports = homeRouter;
+module.exports = router;
