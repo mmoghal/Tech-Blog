@@ -4,7 +4,7 @@ A CMS-style blog site where users can create, read, update, and delete blog post
 
 ## Application Image
 
-![alt Image of the application](https://github.com/mmoghal/tech-blog/tree/main/public/images/tech.png)
+![alt Image of the application](https://github.com/mmoghal/tech-blog/blob/main/tech.png)
 
 
 ## Table of Contents
